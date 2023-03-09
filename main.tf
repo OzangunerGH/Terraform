@@ -1,8 +1,8 @@
 # Defining the cloud provider, region and credentials.
 provider "aws" {
     region = "us-east-1"
-    access_key = "AKIA2WN6MIIUBNROTPFO"
-    secret_key = "+loPDR0YuwsSHE9xR67kjzqBXa8AmUF1ELjWStt2"
+    access_key = "your key"
+    secret_key = "your key"
 }
 
 # Creating a Virtual Private Cloud
