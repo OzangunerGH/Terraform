@@ -1,1 +1,1 @@
-Hands-on Terraform Code's written while following Zeal Vora's Terraform Course.
+Hands-on Terraform Code files written while following Zeal Vora's Terraform Course.
