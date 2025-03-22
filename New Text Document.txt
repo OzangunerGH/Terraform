@@ -1,0 +1,58 @@
+# List of services to disable
+$servicesToDisable = @(
+    "AxInstSV",                         # ActiveX Installer (AxInstSV)
+    "tzautoupdate",                     # Auto Time Zone Updater
+    "bthserv",                          # Bluetooth Support Service
+    "DevicePicker_xxxxxxx",             # DevicePicker_xxxxxxx
+    "MapsBroker",                       # Download Maps Manager
+    "lfsvc",                            # Geolocation Service
+    "GraphicsPerfSvc",                  # GraphicPerfSvc
+    "SharedAccess",                     # Internet Connection Sharing (ICS)
+    "lltdsvc",                          # Link-Layer Topology Discovery Mapper
+    "wlidsvc",                          # Microsoft Account Sign-in Assistant
+    "AppVClient",                       # Microsoft App-V Client
+    "NetTcpPortSharing",                # Net.TCP Port Sharing Service
+    "NcbService",                       # Network Connection Broker
+    "CscService",                       # Offline Files
+    "ssh-agent",                        # OpenSSH Authentication Agent
+    "SEMgrSvc",                         # Payments and NFC/SE Manager
+    "Spooler",                          # Print Spooler (If not to be a Print Server)
+    "PrintNotify",                      # Printer Extensions and Notifications (If Not to be a Print Server)
+    "PcaSvc",                           # Program Compatibility Assistant Service
+    "QWAVE",                            # Quality Windows Audio Video Experience
+    "RmSvc",                            # Radio Management Service
+    "RemoteAccess",                     # Routing and Remote Access
+    "SensorDataService",                # Sensor Data Service
+    "SensorMonitoringService",          # Sensor Monitoring Service
+    "SensrSvc",                         # Sensor Service
+    "shpamsvc",                         # Shared PC Account Manager
+    "ShellHWDetection",                 # Shell Hardware Detection
+    "SCardSvr",                         # Smart Card
+    "ScDeviceEnum",                     # Smart Card Device Enumeration Service
+    "SSDPSRV",                          # SSDP Discovery
+    "StillImage",                       # Still Image Acquisition Events
+    "SMAService",                       # Sysem Management Assistant Service
+    "TabletInputService",               # Touch Keyboard and Handwriting Panel Service
+    "upnphost",                         # UPnP Device Host
+    "UEVAgentService",                  # User Experience Virtualization Service
+    "WalletService",                    # WalletService
+    "AudioSrv",                         # Windows Audio
+    "AudioEndpointBuilder",             # Windows Audio Endpoint Builder
+    "FrameServer",                      # Windows Camera Frame Server
+    "FrameServiceMonitor",              # Windows Camera Frame Server Monitor
+    "WerSvc",                           # Windows Error Reporting Service
+    "wisvc",                            # Windows Insider Service
+    "PushToInstall",                    # Windows PushToInstall Service
+    "WSearch"                           # Windows Search
+)
+
+# Loop through each service and disable it
+foreach ($service in $servicesToDisable) {
+    try {
+        Stop-Service -Name $service -Force -ErrorAction Stop
+        Set-Service -Name $service -StartupType Disabled
+        Write-Output "Disabled $service successfully."
+    } catch {
+        Write-Output "Failed to disable $service. Error: $_"
+    }
+}
